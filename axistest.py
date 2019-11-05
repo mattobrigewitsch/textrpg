@@ -1,6 +1,6 @@
 
 #To add a layer to the map, draw another layer using the same format,
-#and reference in yaxislist. These are the only 2 references unecessary.
+#and reference in yaxislist. These are the only 2 references necessary.
 yaxis0 = [' . ',' . ',' . ',' . ',' . ']
 yaxis1 = [' . ',' . ',' . ',' . ',' . ']
 yaxis2 = [' . ',' . ',' . ',' X ',' . ']
