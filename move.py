@@ -2,10 +2,10 @@
 #To add a layer to the map, draw another layer using the same format,
 #and reference in yaxislist. These are the only 2 references necessary.
 yaxis0 = [' . ',' . ',' . ',' . ',' . ',' . ']
-yaxis1 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
+yaxis1 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' X ']
 yaxis2 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ']
 yaxis3 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
-yaxis4 = [' . ',' . ',' . ',' . ',' . ',' X ']
+yaxis4 = [' . ',' . ',' . ',' . ',' . ',' . ']
 
 
 yaxislist = [yaxis0, yaxis1, yaxis2, yaxis3, yaxis4]
@@ -13,6 +13,8 @@ minyaxis = len(yaxislist)-1
 
 userin = "setup placeholder"
 global searchinterval, xaxis, yaxis
+oldev = ' . '
+ev = ' . '
 searchinterval = 0
 yaxis = 0
 activeyaxis = yaxis0
@@ -70,9 +72,11 @@ while userin != "quit":
         if activeyaxis != yaxis0:
             try:
                 tempyaxis = yaxislist[yaxis - 1]
+                oldev = ev
                 ev = tempyaxis.pop(xaxis)
                 if ev == ' . ':
                     del activeyaxis[xaxis]
+                    activeyaxis.insert(xaxis, oldev)
                     tempyaxis.insert(xaxis, ' X ')
                     worlddisplay(minyaxis)
             except:
@@ -81,9 +85,11 @@ while userin != "quit":
         if activeyaxis != yaxislist[minyaxis]:
             try:
                 tempyaxis = yaxislist[yaxis + 1]
+                oldev = ev
                 ev = tempyaxis.pop(xaxis)
                 if ev == ' . ':
                     del activeyaxis[xaxis]
+                    activeyaxis.insert(xaxis, oldev)
                     tempyaxis.insert(xaxis, ' X ')
                     worlddisplay(minyaxis)
             except:
