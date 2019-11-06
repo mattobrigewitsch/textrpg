@@ -76,7 +76,7 @@ while userin != "quit":
                     tempyaxis.insert(xaxis, ' X ')
                     worlddisplay(minyaxis)
             except:
-                print()
+                print("There is nothing in that direction")
     elif userin == "s":
         if activeyaxis != yaxislist[minyaxis]:
             try:
@@ -87,4 +87,4 @@ while userin != "quit":
                     tempyaxis.insert(xaxis, ' X ')
                     worlddisplay(minyaxis)
             except:
-                print()
+                print("There is nothing in that direction")
