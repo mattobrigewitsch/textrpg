@@ -1,11 +1,11 @@
 
 #To add a layer to the map, draw another layer using the same format,
 #and reference in yaxislist. These are the only 2 references necessary.
-yaxis0 = [' . ',' . ',' . ',' . ',' . ']
-yaxis1 = [' . ',' . ',' . ',' . ',' . ']
-yaxis2 = [' X ',' . ',' . ',' . ',' . ']
-yaxis3 = [' . ',' . ',' . ',' . ',' . ']
-yaxis4 = [' . ',' . ',' . ',' . ',' . ']
+yaxis0 = [' . ',' . ',' . ',' . ',' . ',' . ']
+yaxis1 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
+yaxis2 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ']
+yaxis3 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
+yaxis4 = [' . ',' . ',' . ',' . ',' . ',' X ']
 
 
 yaxislist = [yaxis0, yaxis1, yaxis2, yaxis3, yaxis4]
@@ -40,10 +40,12 @@ def worlddisplay(minyaxisnum):
         interval = interval + 1
     print("[][][][][][][][]")
 
+#def eventfinder(eventcode):
+
 worlddisplay(minyaxis)
 
 while userin != "quit":
-    userin = input()
+    userin = input().lower()
     axisfinder()
     activeyaxis = yaxislist[yaxis]
     if userin == "test":
@@ -66,19 +68,23 @@ while userin != "quit":
                 worlddisplay(minyaxis)
     elif userin == "w":
         if activeyaxis != yaxis0:
-            tempyaxis = yaxislist[yaxis - 1]
-            if tempyaxis[xaxis] == ' . ':
-                del activeyaxis[xaxis]
-                activeyaxis.insert(xaxis, ' . ')
-                del tempyaxis[xaxis]
-                tempyaxis.insert(xaxis, ' X ')
-                worlddisplay(minyaxis)
+            try:
+                tempyaxis = yaxislist[yaxis - 1]
+                ev = tempyaxis.pop(xaxis)
+                if ev == ' . ':
+                    del activeyaxis[xaxis]
+                    tempyaxis.insert(xaxis, ' X ')
+                    worlddisplay(minyaxis)
+            except:
+                print()
     elif userin == "s":
         if activeyaxis != yaxislist[minyaxis]:
-            tempyaxis = yaxislist[yaxis + 1]
-            if tempyaxis[xaxis] == ' . ':
-                del activeyaxis[xaxis]
-                activeyaxis.insert(xaxis, ' . ')
-                del tempyaxis[xaxis]
-                tempyaxis.insert(xaxis, ' X ')
-                worlddisplay(minyaxis)
+            try:
+                tempyaxis = yaxislist[yaxis + 1]
+                ev = tempyaxis.pop(xaxis)
+                if ev == ' . ':
+                    del activeyaxis[xaxis]
+                    tempyaxis.insert(xaxis, ' X ')
+                    worlddisplay(minyaxis)
+            except:
+                print()
