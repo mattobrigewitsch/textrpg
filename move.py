@@ -49,56 +49,60 @@ def worlddisplay(minyaxisnum):
 def eventfinder(eventcode):
     if eventcode == ' . ':
         #this would be a nested function if I was allowed to use them
-        if "w" in userin or "s" in userin:
-            tempyaxis.insert(xaxis, ' X ')
-            del activeyaxis[xaxis]
-        activeyaxis.insert(xaxis, oldev)
-        worlddisplay(minyaxis)
+        if "w" in userin or "s" in userin: #only runs next lines if met
+            tempyaxis.insert(xaxis, ' X ') #if going up or down insert a new X
+            del activeyaxis[xaxis] #delete old X
+        activeyaxis.insert(xaxis, oldev) #insert the missing map part
+        worlddisplay(minyaxis) #draw the map
     if eventcode == ' o ':
-        if "w" in userin or "s" in userin:
-            tempyaxis.insert(xaxis, ' X ')
-            del activeyaxis[xaxis]
-        activeyaxis.insert(xaxis, oldev)
-        worlddisplay(minyaxis)
+        if "w" in userin or "s" in userin:#only runs next lines if met
+            tempyaxis.insert(xaxis, ' X ')#if going up or down insert a new X
+            del activeyaxis[xaxis]#delete old X
+        activeyaxis.insert(xaxis, oldev)#insert the missing map part
+        worlddisplay(minyaxis)#draw the map
         print("you walked over the amazing test rock! congratulations!")
 
-worlddisplay(minyaxis)
+worlddisplay(minyaxis) #initial display function, for initialization
 
-while userin != "quit":
-    userin = input().lower()
-    axisfinder()
-    activeyaxis = yaxislist[yaxis]
-    if userin == "test":
+while userin != "quit": #consistently run the following
+    userin = input().lower() #take user input in lower case
+    axisfinder() #find the X
+    activeyaxis = yaxislist[yaxis] #set the activeyaxis to the y axis with the X
+    if userin == "test": #test code, n/a
         print("test vacant")
-    if userin == "axistest":
+    if userin == "axistest": #used for testing again, n/a
         axisfinder()
         print("yaxis: " + str(yaxis))
         print("xaxis: " + str(xaxis))
-    if userin == "a":
-        if xaxis != 0:
-            oldev = ev
-            ev = activeyaxis.pop(xaxis - 1)
-            eventfinder(ev)
-    elif userin == "d":
-        if xaxis != len(activeyaxis)-1:
-            oldev = ev
-            ev = activeyaxis.pop(xaxis + 1)
-            eventfinder(ev)
-    elif userin == "w":
-        if activeyaxis != yaxis0:
-            try:
-                tempyaxis = yaxislist[yaxis - 1]
-                oldev = ev
-                ev = tempyaxis.pop(xaxis)
-                eventfinder(ev)
-            except:
+    if userin == "a": #if user types a
+        if xaxis != 0: #if the X isnt on the edge
+            oldev = ev #change old event
+            ev = activeyaxis.pop(xaxis - 1) #change new event
+            eventfinder(ev) #run eventfinder with new event
+    elif userin == "d": #if user types d
+        if xaxis != len(activeyaxis)-1: #if the X isnt on the edge
+            oldev = ev #change old event
+            ev = activeyaxis.pop(xaxis + 1) #change new event
+            eventfinder(ev) #run eventfinder with new event
+    elif userin == "w": #if user types w
+        if activeyaxis != yaxis0: #if the X isnt on the edge
+            try: #try to run the following
+                tempyaxis = yaxislist[yaxis - 1] #create a temporary new y axis
+                oldev = ev #change old event
+                ev = tempyaxis.pop(xaxis) #change new event
+                eventfinder(ev) #run eventfinder with new event
+            except: #run if the try failed:
+                #the only reason the try should fail is because there is nothing
+                #in the direction
                 print("There is nothing in that direction")
-    elif userin == "s":
-        if activeyaxis != yaxislist[minyaxis]:
-            try:
-                tempyaxis = yaxislist[yaxis + 1]
-                oldev = ev
-                ev = tempyaxis.pop(xaxis)
-                eventfinder(ev)
-            except:
+    elif userin == "s": #if user types s
+        if activeyaxis != yaxislist[minyaxis]: #if the X isnt on the edge
+            try: #try to run the following
+                tempyaxis = yaxislist[yaxis + 1] #create a temporary new y axis
+                oldev = ev #change old event
+                ev = tempyaxis.pop(xaxis) #change new event
+                eventfinder(ev) #run eventfinder with new event
+            except:#run if the try failed:
+                #the only reason the try should fail is because there is nothing
+                #in the direction
                 print("There is nothing in that direction")
