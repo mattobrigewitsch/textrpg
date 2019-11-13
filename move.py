@@ -106,3 +106,6 @@ while userin != "quit": #consistently run the following
                 #the only reason the try should fail is because there is nothing
                 #in the direction
                 print("There is nothing in that direction")
+    else: #run if the input is not in range of anything prior
+        worlddisplay(minyaxis) #draw map
+        print("invalid input") #print invalid input to console
