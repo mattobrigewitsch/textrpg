@@ -1,3 +1,8 @@
+# Matt Obrigewitsch
+# CS 30
+# 11/05/19
+# Creates a grid which is navigateable with W, A, S, and D
+
 #To add a layer to the map, draw another layer using the same format,
 #and reference in yaxislist. These are the only 2 references necessary.
 yaxis0 = [' . ',' . ',' . ',' . ',' . ',' . ']
@@ -70,11 +75,11 @@ while userin != "quit": #consistently run the following
     activeyaxis = yaxislist[yaxis] #set the activeyaxis to the y axis with the X
     if userin == "test": #test code, n/a
         print("test vacant")
-    if userin == "axistest": #used for testing again, n/a
+    elif userin == "axistest": #used for testing again, n/a
         axisfinder()
         print("yaxis: " + str(yaxis))
         print("xaxis: " + str(xaxis))
-    if userin == "a": #if user types a
+    elif userin == "a": #if user types a
         if xaxis != 0: #if the X isnt on the edge
             oldev = ev #change old event
             ev = activeyaxis.pop(xaxis - 1) #change new event
@@ -102,10 +107,12 @@ while userin != "quit": #consistently run the following
                 oldev = ev #change old event
                 ev = tempyaxis.pop(xaxis) #change new event
                 eventfinder(ev) #run eventfinder with new event
-            except:#run if the try failed:
+            except: #run if the try failed:
                 #the only reason the try should fail is because there is nothing
                 #in the direction
                 print("There is nothing in that direction")
+    elif userin == "quit":
+        print("ending program, thanks for playing!")
     else: #run if the input is not in range of anything prior
         worlddisplay(minyaxis) #draw map
         print("invalid input") #print invalid input to console
