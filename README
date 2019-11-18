@@ -4,4 +4,4 @@ Merchant is a python text based adventure game
 
 ## Usage
 
-python (runfile).py
+python game.py
