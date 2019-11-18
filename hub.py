@@ -26,15 +26,15 @@ while userin != "quit": #consistently run the following
             move2.eventfinder(move2.ev) #run eventfinder with new event
     elif userin == "w": #if user types w
         if move2.activeyaxis != move2.yaxis0: #if the X isnt on the edge
-            #try: #try to run the following
+            try: #try to run the following
                 move2.tempyaxis = move2.yaxislist[move2.yaxis - 1] #create a temporary new y axis
                 move2.oldev = move2.ev #change old event
                 move2.ev = move2.tempyaxis.pop(move2.xaxis) #change new event
                 move2.eventfinder(move2.ev) #run eventfinder with new event
-            #except: #run if the try failed:
+            except: #run if the try failed:
                 #the only reason the try should fail is because there is nothing
                 #in the direction
-                #print("There is nothing in that direction")
+                print("There is nothing in that direction")
     elif userin == "s": #if user types s
         if move2.activeyaxis != move2.yaxislist[move2.minyaxis]: #if the X isnt on the edge
             try: #try to run the following
@@ -49,5 +49,4 @@ while userin != "quit": #consistently run the following
     elif userin == "quit":
         print("ending program, thanks for playing!")
     else: #run if the input is not in range of anything prior
-        worlddisplay(move2.minyaxis) #draw map
         print("invalid input") #print invalid input to console

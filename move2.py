@@ -52,6 +52,7 @@ def worlddisplay(minyaxisnum):
     print("[][][][][][][][]") #prints a vibing border
 
 def eventfinder(eventcode):
+    import hub
     if eventcode == ' . ':
         #this would be a nested function if I was allowed to use them
         if "w" in hub.userin or "s" in hub.userin: #only runs next lines if met
@@ -59,10 +60,14 @@ def eventfinder(eventcode):
             del activeyaxis[xaxis] #delete old X
         activeyaxis.insert(xaxis, oldev) #insert the missing map part
         worlddisplay(minyaxis) #draw the map
-    if eventcode == ' o ':
+    elif eventcode == ' o ':
         if "w" in hub.userin or "s" in hub.userin:#only runs next lines if met
             tempyaxis.insert(xaxis, ' X ')#if going up or down insert a new X
             del activeyaxis[xaxis]#delete old X
         activeyaxis.insert(xaxis, oldev)#insert the missing map part
         worlddisplay(minyaxis)#draw the map
         print("you walked over the amazing test rock! congratulations!")
+    else:
+        print("no event code")
+
+import hub
